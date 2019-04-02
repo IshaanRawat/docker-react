@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web: ## name of your service
+    ## build: . ## This is used when we have a Dockerfile
+    build:
+      context: . ## where we want all the files and folders for this image to be pulled from
+      ## if we had nested folder for web then we would have specified the path here like /web
+      dockerfile: Dockerfile.dev ## location of the dockerfile to use
+    ports:
+      - "3000:3000" ## From local to server
+    volumes:
+      - /app/node_modules ## This is saying that do not try to map this folder with the
+      ## local directory
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"] ## Overriding command
