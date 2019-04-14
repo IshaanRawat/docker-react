@@ -13,3 +13,16 @@ before_install:
 scripts:
   ## -- --coverage to make sure that npm run test command exits when it's done.
   - docker run ishaanrawat/docker-react npm run test -- --coverage
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-west-2"
+#   app: "<Name-of-your-app-as-entered-when-creating-in-beanstalk>"
+#   env: "<Name-of-env>"
+#   bucket_name: "Something like elasticbeanstalk-us-west-2-2131231231"
+#   bucket_path: "<Name-of-your-app-as-entered-when-creating-in-beanstalk>"
+#   on:
+#     branch: master
+#   ##Check video named Automated deployment for the key generation
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key:
+#     secure: "$AWS_SECRET_KEY"
