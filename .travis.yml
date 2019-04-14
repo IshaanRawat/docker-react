@@ -1,0 +1,14 @@
+sudo: required ## We need superuser permission when setting up docker
+## line 3 4 is saying that Travis, we need a copy of docker ready to go
+services:
+  - docker
+
+## Before the tests are ran
+before_install:
+  ## You can use any tag name like MYIMAGE, but it is a convention to use <docker-username>/<name>
+  - docker build -t ishaanrawat/docker-react -f Dockerfile.dev .
+
+## The commands that actually need to be executed to run the test suite
+scripts:
+  ## -- --coverage to make sure that npm run test command exits when it's done.
+  - docker run ishaanrawat/docker-react npm run test -- --coverage
