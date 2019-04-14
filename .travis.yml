@@ -1,3 +1,4 @@
+language: generic
 sudo: required ## We need superuser permission when setting up docker
 ## line 3 4 is saying that Travis, we need a copy of docker ready to go
 services:
